@@ -12,6 +12,15 @@
 [![Windows (MinGW)](https://github.com/chronoxor/CppServer/actions/workflows/build-windows-mingw.yml/badge.svg)](https://github.com/chronoxor/CppServer/actions/workflows/build-windows-mingw.yml)
 [![Windows (Visual Studio)](https://github.com/chronoxor/CppServer/actions/workflows/build-windows-vs.yml/badge.svg)](https://github.com/chronoxor/CppServer/actions/workflows/build-windows-vs.yml)
 
+# Updates After Fork
+* Set asio library back to 1.29.0 to ensure compatibility with asio::io_service functions
+* Minor updates to CppCommon/include/string/format.inl to ensure build compatibility 
+* Minor updates to CppCommon/include/system/uuid.inl to ensure build compatibility
+* Changed a variable in the PrepareSendFrame function located in the Websocket class: /source/server/ws/ws.cpp:
+```c++
+bool store_status = ((opcode == WS_CLOSE) && ((size > 0) || (status != 0)));
+```
+
 Ultra fast and low latency asynchronous socket server & client C++ library with
 support TCP, SSL, UDP, HTTP, HTTPS, WebSocket protocols and [10K connections problem](https://en.wikipedia.org/wiki/C10k_problem)
 solution.
