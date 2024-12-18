@@ -212,7 +212,7 @@ bool WebSocket::PerformServerUpgrade(const HTTP::HTTPRequest& request, HTTP::HTT
 void WebSocket::PrepareSendFrame(uint8_t opcode, bool mask, const void* buffer, size_t size, int status)
 {
     // Check if we need to store additional 2 bytes of close status frame
-    bool store_status = ((opcode & WS_CLOSE) == WS_CLOSE) && ((size > 0) || (status != 0));
+    bool store_status = ((opcode == WS_CLOSE) && ((size > 0) || (status != 0)));
     if (store_status)
         size += 2;
 
